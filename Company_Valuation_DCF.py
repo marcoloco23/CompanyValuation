@@ -67,8 +67,10 @@ ticker = st.selectbox(
 
 # In[124]:
 
-
-q_cash_flow_statement = pd.DataFrame(get_jsonparsed_data(base_url+'cash-flow-statement/'+ticker+'?period=quarter'+'&apikey='+apiKey))
+try:
+    q_cash_flow_statement = pd.DataFrame(get_jsonparsed_data(base_url+'cash-flow-statement/'+ticker+'?period=quarter'+'&apikey='+apiKey))
+except ValueError:
+    print(get_jsonparsed_data(base_url+'cash-flow-statement/'+ticker+'?period=quarter'+'&apikey='+apiKey))
 q_cash_flow_statement = q_cash_flow_statement.set_index('date').iloc[:4]
 q_cash_flow_statement = q_cash_flow_statement.apply(pd.to_numeric, errors='coerce')
 
