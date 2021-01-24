@@ -215,8 +215,6 @@ def main():
     cash_and_ST_investments = q_balance_statement.iloc[0]['cashAndShortTermInvestments']
     metric = ['Price', 'EPS next 5Y', 'Beta', 'Shs Outstand','P/E']
     finviz_data = get_finviz_data(ticker)
-    Beta = finviz_data['Beta']
-    discount_rate = get_discount_rate(Beta)
     EPS_growth_5Y = finviz_data['EPS next 5Y']
     EPS_growth_6Y_to_10Y = EPS_growth_5Y/2
     EPS_growth_11Y_to_20Y  = np.minimum(EPS_growth_6Y_to_10Y, 4)
